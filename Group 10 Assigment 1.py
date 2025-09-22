@@ -1,4 +1,4 @@
-print("Welcome to the Gas Station Wholesaler Program")
+print("Welcome to the Blue Station")
 print("Menu:")
 print("G: Gas")
 print("O: Oil")
@@ -50,15 +50,18 @@ else:
         gst_rate = 0.15
         valid_province = True
     else:
-        print("Invalid province entered. Program will now exit.")
+        print("Wrong province entered. Program ends now.")
 
     if valid_province:
         if choice == "O" or choice == "o":
             cases_input = input("Enter number of oil cases: ")
+
             if cases_input.isdigit():
                 cases = int(cases_input)
                 litres = cases * 12
                 price_per_litre = 1.27
+                original_price = price_per_litre
+
                 if cases > 8:
                     price_per_litre = price_per_litre * 0.90
                 subtotal = litres * price_per_litre
@@ -66,6 +69,10 @@ else:
                 total = subtotal + gst
                 print("You selected: Oil")
                 print("Total litres purchased: " + str(litres))
+
+                if cases > 8:
+                    print("Price before discount: $" + str(round(original_price, 2)) + " per litre")
+                print("Price after discount: $" + str(round(price_per_litre, 2)) + " per litre")
                 print("Oil Purchase Summary:")
                 print("Subtotal: $" + str(round(subtotal, 2)))
                 print("GST: $" + str(round(gst, 2)))
@@ -75,9 +82,12 @@ else:
 
         if choice == "G" or choice == "g":
             litres_input = input("Enter number of gas litres: ")
+
             if litres_input.replace(".", "", 1).isdigit():
                 litres = float(litres_input)
                 price_per_litre = 1.07
+                original_price = price_per_litre
+
                 if litres > 4000:
                     price_per_litre = price_per_litre * 0.90
                 subtotal = litres * price_per_litre
@@ -85,6 +95,10 @@ else:
                 total = subtotal + gst
                 print("You selected: Gas")
                 print("Total litres purchased: " + str(round(litres, 2)))
+                
+                if litres > 4000:
+                    print("Price before discount: $" + str(round(original_price, 2)) + " per litre")
+                print("Price after discount: $" + str(round(price_per_litre, 2)) + " per litre")
                 print("Gas Purchase Summary:")
                 print("Subtotal: $" + str(round(subtotal, 2)))
                 print("GST: $" + str(round(gst, 2)))
