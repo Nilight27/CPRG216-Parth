@@ -1,14 +1,13 @@
-print("Welcome to the Blue Station")
-print("Menu:")
+print("*** Welcome to Gas Station Program! ***")
 print("G: Gas")
 print("O: Oil")
 
-choice = input("Please enter your choice (G/g or O/o): ")
+choice = input("Enter your choice: ")
 
 if choice != "G" and choice != "g" and choice != "O" and choice != "o":
     print("Invalid input, you should enter g/G or o/O")
 else:
-    province = input("Enter your province abbreviation (e.g., AB, ON): ")
+    province = input("Enter province abbreviation: ")
 
     gst_rate = 0
     valid_province = False
@@ -50,58 +49,46 @@ else:
         gst_rate = 0.15
         valid_province = True
     else:
-        print("Wrong province entered. Program ends now.")
+        print("Invalid province entered. Program will now exit.")
 
     if valid_province:
-        if choice == "O" or choice == "o":
-            cases_input = input("Enter number of oil cases: ")
-
-            if cases_input.isdigit():
-                cases = int(cases_input)
-                litres = cases * 12
-                price_per_litre = 1.27
-                original_price = price_per_litre
-
-                if cases > 8:
-                    price_per_litre = price_per_litre * 0.90
-                subtotal = litres * price_per_litre
-                gst = subtotal * gst_rate
-                total = subtotal + gst
-                print("You selected: Oil")
-                print("Total litres purchased: " + str(litres))
-
-                if cases > 8:
-                    print("Price before discount: $" + str(round(original_price, 2)) + " per litre")
-                print("Price after discount: $" + str(round(price_per_litre, 2)) + " per litre")
-                print("Oil Purchase Summary:")
-                print("Subtotal: $" + str(round(subtotal, 2)))
-                print("GST: $" + str(round(gst, 2)))
-                print("Total Cost: $" + str(round(total, 2)))
-            else:
-                print("Invalid number of cases entered. Please enter a whole number.")
-
         if choice == "G" or choice == "g":
-            litres_input = input("Enter number of gas litres: ")
+            litres_input = input("Enter number of litres: ")
+            litres = float(litres_input)
+            price_per_litre = 1.07
+            original_price = price_per_litre
+            price_before_discount = litres * original_price
+            if litres > 4000:
+                price_per_litre = price_per_litre * 0.90
+            price_after_discount = litres * price_per_litre
+            gst = price_after_discount * gst_rate
+            total = price_after_discount + gst
+            print()
+            print("Product: Gas")
+            print("# Of Litres: " + str(litres))
+            if litres > 4000:
+                print("Price Before Discount: " + str(price_before_discount))
+            print("Price After Discount: " + str(price_after_discount))
+            print("GST: " + str(gst))
+            print("Total Price: " + str(total))
 
-            if litres_input.replace(".", "", 1).isdigit():
-                litres = float(litres_input)
-                price_per_litre = 1.07
-                original_price = price_per_litre
-
-                if litres > 4000:
-                    price_per_litre = price_per_litre * 0.90
-                subtotal = litres * price_per_litre
-                gst = subtotal * gst_rate
-                total = subtotal + gst
-                print("You selected: Gas")
-                print("Total litres purchased: " + str(round(litres, 2)))
-                
-                if litres > 4000:
-                    print("Price before discount: $" + str(round(original_price, 2)) + " per litre")
-                print("Price after discount: $" + str(round(price_per_litre, 2)) + " per litre")
-                print("Gas Purchase Summary:")
-                print("Subtotal: $" + str(round(subtotal, 2)))
-                print("GST: $" + str(round(gst, 2)))
-                print("Total Cost: $" + str(round(total, 2)))
-            else:
-                print("Invalid number of litres entered. Please enter a numeric value.")
+        if choice == "O" or choice == "o":
+            cases_input = input("Enter number of cases: ")
+            cases = int(cases_input)
+            litres = cases * 12
+            price_per_litre = 1.27
+            original_price = price_per_litre
+            price_before_discount = litres * original_price
+            if cases > 8:
+                price_per_litre = price_per_litre * 0.90
+            price_after_discount = litres * price_per_litre
+            gst = price_after_discount * gst_rate
+            total = price_after_discount + gst
+            print()
+            print("Product: Oil")
+            print("# Of Litres: " + str(litres))
+            if cases > 8:
+                print("Price Before Discount: " + str(price_before_discount))
+            print("Price After Discount: " + str(price_after_discount))
+            print("GST: " + str(gst))
+            print("Total Price: " + str(total))
