@@ -8,48 +8,26 @@ if choice != "G" and choice != "g" and choice != "O" and choice != "o":
     print("Invalid input, you should enter g/G or o/O")
 else:
     province = input("Enter province abbreviation: ")
+
     gst_rate = 0
     valid_province = False
 
-    if province == "AB" or province == "ab":
+    five_percent = list(["AB", "ab", "BC", "bc", "MB", "mb", "NT", "nt", "NU", "nu", "QC", "qc", "SK", "sk", "YT", "yt"])
+    thirteen_percent = list(["ON", "on"])
+    fifteen_percent = list(["PE", "pe", "NB", "nb", "NS", "ns"])
+
+    if province in five_percent:
         gst_rate = 0.05
         valid_province = True
-    elif province == "BC" or province == "bc":
-        gst_rate = 0.05
-        valid_province = True
-    elif province == "MB" or province == "mb":
-        gst_rate = 0.05
-        valid_province = True
-    elif province == "NT" or province == "nt":
-        gst_rate = 0.05
-        valid_province = True
-    elif province == "NU" or province == "nu":
-        gst_rate = 0.05
-        valid_province = True
-    elif province == "QC" or province == "qc":
-        gst_rate = 0.05
-        valid_province = True
-    elif province == "SK" or province == "sk":
-        gst_rate = 0.05
-        valid_province = True
-    elif province == "YT" or province == "yt":
-        gst_rate = 0.05
-        valid_province = True
-    elif province == "ON" or province == "on":
+    elif province in thirteen_percent:
         gst_rate = 0.13
         valid_province = True
-    elif province == "PE" or province == "pe":
-        gst_rate = 0.15
-        valid_province = True
-    elif province == "NB" or province == "nb":
-        gst_rate = 0.15
-        valid_province = True
-    elif province == "NS" or province == "ns":
+    elif province in fifteen_percent:
         gst_rate = 0.15
         valid_province = True
     else:
         print("Invalid province entered. Program will now exit.")
-    
+
     if valid_province:
         if choice == "G" or choice == "g":
             litres_input = input("Enter number of litres: ")
@@ -70,7 +48,7 @@ else:
             print("Price After Discount: " + str(price_after_discount))
             print("GST: " + str(gst))
             print("Total Price: " + str(total))
-        
+
         if choice == "O" or choice == "o":
             cases_input = input("Enter number of cases: ")
             cases = int(cases_input)
