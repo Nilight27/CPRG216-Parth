@@ -1,10 +1,9 @@
-# Pay and Go Evening Parking Program
-# Constants
+
+
 MAX_CAPACITY = 50
 PARKING_FEE = 4.00
 ADMIN_PASSWORD = "password"
 
-# Global lists to store vehicle data
 plates = []
 cc_numbers = []
 
@@ -26,7 +25,6 @@ def print_menu():
 
 
 def check_password():
-    """Ask user to enter password and validate it"""
     password = input("Enter password: ")
     if password == ADMIN_PASSWORD:
         return True
@@ -35,7 +33,6 @@ def check_password():
 
 
 def register_vehicle():
-    """Register a vehicle in the parking lot"""
     if len(plates) >= MAX_CAPACITY:
         print("The parking lot is full")
         return
@@ -52,7 +49,6 @@ def register_vehicle():
 
 
 def verify_vehicle(plate):
-    """Verify if a vehicle is registered in the parking lot"""
     if plate in plates:
         return plate
     else:
@@ -60,7 +56,6 @@ def verify_vehicle(plate):
 
 
 def display_vehicles():
-    """Display all registered vehicles and save to vehicles.txt"""
     if len(plates) == 0:
         print("No vehicles in the lot")
     else:
@@ -76,7 +71,6 @@ def display_vehicles():
 
 
 def display_charges():
-    """Display all charges and save to charges.txt"""
     if len(plates) == 0:
         print("No vehicles in the lot")
     else:
@@ -96,7 +90,6 @@ def display_charges():
 
 
 def remove_vehicle(plate):
-    """Remove a vehicle from the parking lot"""
     result = verify_vehicle(plate)
     if result is None:
         print(f"It is not registered")
@@ -108,15 +101,12 @@ def remove_vehicle(plate):
 
 
 def clear_vehicles():
-    """Clear all vehicles from the parking lot"""
     plates.clear()
     cc_numbers.clear()
     print("All license plates removed")
 
 
-def main():
-    """Main function to run the parking program"""
-    
+def main():    
     while True:
         print_menu()
         choice = input("Enter your choice: ")
