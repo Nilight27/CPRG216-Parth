@@ -5,7 +5,7 @@ F1 Driver Analysis and Prediction System
 This system analyzes current F1 drivers, their performance stats, car capabilities,
 and calculates probabilities for race wins and championship victories.
 
-Author: AI Assistant
+Author: Parth
 Date: 2024
 """
 
