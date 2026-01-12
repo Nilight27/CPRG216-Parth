@@ -5,7 +5,7 @@ F1 Driver Analysis System with Jolpica F1 API Integration
 This version uses the Jolpica F1 API (replacement for Ergast API)
 which provides current F1 data including 2025 season data.
 
-Author: AI Assistant
+Author: Parth
 Date: 2024
 """
 
